@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+  <HEAD>
+    <TITLE></TITLE>
+  </HEAD>
+  <BODY>
+<P>
+    Contains classes that represent X10 codes.  You are unable to
+instantiate any of these classes directly and can only use the constants defined
+within {@link javax.x10.codes.HouseCode}, {@link javax.x10.codes.UnitCode}, and
+{@link javax.x10.codes.FunctionCode}.
+</P>
+<P>
+    The X10 protocol addresses units(like lights, drapes, etc.) with a scheme
+consisting of a {@link javax.x10.codes.HouseCode}, represented by the letters 
+<B>A</B> through <B>P</B>, and a {@link javax.x10.codes.UnitCode}, represented
+by the numbers <B>1</B> through <B>16</B>.
+Since each has 16 possible values, there are 256 possible addresses for X10
+controlled appliances in your home. Addresses can be shared if you would like to
+control, two lights for instance, at the same time, allowing for more that 256 
+controlled appliances.  The X10 protocol also allows several addresses to be
+addressed at the same time, though this is limited to addresses with the same
+{@link javax.x10.codes.HouseCode}, i.e. <B>A1</B> and <B>A5</B> can be addressed
+at the same time because they both have the {@link javax.x10.codes.HouseCode} of
+<B>A</B>, but <B>A1</B> and <B>B2</B> can not.
+</P>
+<P>
+    There are 16 different commands that can be carried out by X10 appliances.  These
+commands are represented by {@link javax.x10.codes.FunctionCode}s.  Examples of
+addressing appliances and sending them functions to carry out would be:
+<LI>Address <B><CODE>A1</CODE></B>, Address <B><CODE>A2</CODE></B>, Function <B><CODE>DIM</CODE></B> by 25%;
+This dims the lights with addresses <B><CODE>A1</CODE></B> and <B><CODE>A2</CODE></B> by 25% of their current value.</LI>
+<LI>Address <B><CODE>B4</CODE></B>, Function <B><CODE>OFF</CODE></B>, Address <B><CODE>C3</CODE></B>, Function <B><CODE>ON</CODE></B>; 
+This turns appliance <B><CODE>B4</CODE></B> off and then <B><CODE>C3</CODE></B> on.</LI>
+<LI>Function <B><CODE>ALL_LIGHTS_OFF</CODE></B>; Turns all lights off in all house codes, but not appliances that are not light.  For those, use <B><CODE>ALL_UNITS_OFF</CODE></B></LI>
+</P>
+<P>
+    All of these codes are delivered within {@link javax.x10.event.X10Event} 
+using an {@link javax.x10.X10Transmitter}.
+
+@see javax.x10.event.X10Event
+  </BODY>
+</HTML>
